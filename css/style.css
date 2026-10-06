@@ -1,0 +1,620 @@
+/*
+COLORS — 커피 로스터리 콘셉트
+================================================ */
+:root {
+    --kraft: #cfae84;
+    --kraft-light: #e9d6b8;
+    --cream: #faf1e4;
+    --espresso: #3b2418;
+    --espresso-deep: #241209;
+    --caramel: #b97d3f;
+    --rust: #8a3324;
+    --white: #fff;
+    --grey: #3b2418;
+
+    /* 다크 모드(= 밤의 카페) 전환용 변수 */
+    --bg: var(--cream);
+    --text: var(--espresso);
+}
+
+* { box-sizing: border-box; }
+
+/*
+일반 스타일
+================================================ */
+.wrapper {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+h1,
+h2,
+h3,
+.logo,
+.main-date {
+    font-family: "Gaegu", "Noto Sans KR", sans-serif;
+    font-weight: 700;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.75rem;
+    margin-bottom: 2rem;
+}
+
+p {
+    line-height: 1.8;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/*
+================================================ */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(rgba(59,36,24,.05) 1px, transparent 1px),
+        var(--bg);
+    background-size: 14px 14px, auto;
+    color: var(--text);
+    font-family: "Noto Sans KR", sans-serif;
+    transition: background .3s, color .3s;
+}
+
+/* 다크 모드 = 밤의 카페. 따뜻한 조명색으로 바뀐다 */
+body.dark {
+    --bg: var(--espresso-deep);
+    --text: #f3e3cc;
+}
+
+
+/*
+HEADER — 커피 봉투 라벨 느낌
+================================================ */
+header {
+    background: var(--espresso);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    border-bottom: 3px dashed var(--kraft);
+}
+
+.logo {
+    letter-spacing: .03em;
+}
+header a {
+    color: var(--cream);
+    font-size: 1.5rem;
+}
+
+header .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-menu {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    border: 2px solid var(--kraft);
+    border-radius: 999px;
+    color: var(--cream);
+    padding: .4rem 1rem;
+    font-family: "Gaegu", sans-serif;
+}
+
+.main-nav {
+    background: var(--espresso);
+    width: 0%;
+    position: absolute;
+    z-index: 2;
+    top: 50px;
+    right: 0;
+    overflow: hidden;
+    transition: .5s;
+    border-bottom: 3px dashed var(--kraft);
+}
+
+.main-nav.open-menu {
+    width: 100%;
+}
+
+.main-nav li {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.main-nav a {
+    display: block;
+    font-family: "Gaegu", sans-serif;
+    font-size: 1.1rem;
+}
+
+
+/*
+MAIN — hero 사진(커피잔) 위 안내 패널
+================================================ */
+#main {
+    position: relative;
+    background-color: var(--kraft);
+    background-image: url('../images/hero.jpg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: cover;
+    min-height: 100vh;
+    color: var(--cream);
+
+    display: flex;
+    align-items: center;
+}
+
+#main .wrapper {
+    width: 100%;
+}
+
+/* 사진 속 커피잔과 겹치지 않도록, 글자는 오른쪽 여백(나무 테이블) 위에 올린다 */
+.hero-panel {
+    background: rgba(36, 18, 9, .55);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 14px;
+    padding: 2rem 1.75rem;
+    text-align: center;
+}
+
+#main h1 {
+    font-size: 3.2rem;
+    margin-bottom: 1.2rem;
+    text-shadow: 2px 2px 0 var(--espresso-deep);
+}
+
+.main-date {
+    display: inline-block;
+    text-align: center;
+    border-top: 3px dashed var(--kraft-light);
+    border-bottom: 3px dashed var(--kraft-light);
+    padding: .6rem 1rem;
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+}
+
+.hero-panel p {
+    text-align: center;
+}
+
+/* 실시간 시계 */
+.clock {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.now-time {
+    display: block;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: .15em;
+    font-variant-numeric: tabular-nums;
+}
+
+.now-date {
+    display: block;
+    font-family: "Gaegu", sans-serif;
+    font-size: 1.15em;
+    margin-bottom: .25rem;
+}
+
+
+/*
+ABOUT — 손글씨 + 폴라로이드 한 장
+================================================ */
+#about {
+    padding: 5rem 1rem 4rem;
+    background: var(--bg);
+}
+
+#about h2 {
+    color: var(--rust);
+}
+
+#about p {
+    margin-bottom: 2rem;
+}
+
+#about img {
+    display: block;
+    margin: 0 auto;
+    padding: 14px 14px 40px;
+    background: var(--white);
+    box-shadow: 0 10px 24px rgba(36,18,9,.25);
+    transform: rotate(-1.5deg);
+}
+
+
+/*
+MENU — 칠판(블랙보드) 메뉴판
+================================================ */
+#menu {
+    background: var(--espresso-deep);
+    padding: 5rem 1rem;
+    position: relative;
+}
+
+#menu::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 3px solid var(--kraft);
+    border-radius: 6px;
+    pointer-events: none;
+}
+
+#menu h2 {
+    color: var(--cream);
+    text-shadow: 0 0 10px rgba(250,241,228,.25);
+}
+
+.cat-menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin-bottom: 1.5rem;
+}
+
+.cat-btn {
+    color: var(--cream);
+    font-family: "Gaegu", sans-serif;
+    font-size: 1.1rem;
+    border: 2px dashed var(--kraft);
+    border-radius: 999px;
+    padding: .5rem 1.4rem;
+    transition: .3s;
+}
+
+.cat-btn.active {
+    background: var(--kraft);
+    color: var(--espresso-deep);
+    border-style: solid;
+}
+
+.cat-panel {
+    display: none;
+}
+
+.cat-panel.active {
+    display: block;
+}
+
+.menu-table {
+    color: var(--cream);
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.menu-table tr {
+    border-bottom: 1px dashed rgba(250,241,228,.4);
+}
+
+.menu-table td {
+    display: block;
+    line-height: 1.6;
+}
+
+.item {
+    font-family: "Gaegu", sans-serif;
+    font-size: 1.2rem;
+    padding-top: 1rem;
+}
+
+.item::before {
+    content: "☕  ";
+}
+
+.price {
+    font-size: 1rem;
+    color: var(--kraft-light);
+    padding-bottom: 1rem;
+}
+
+
+/*
+GALLERY — 폴라로이드 사진
+================================================ */
+#gallery {
+    padding: 5rem 1rem;
+    background: var(--bg);
+}
+
+#gallery h2 {
+    color: var(--caramel);
+}
+
+.photo-main {
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto 1.75rem;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    background: var(--white);
+    padding: 14px 14px 42px;
+    box-shadow: 0 12px 26px rgba(36,18,9,.3);
+    transform: rotate(-1deg);
+}
+
+.photo-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    max-width: 680px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+}
+
+.photo-list li {
+    flex: 0 0 auto;
+    width: 23%;
+}
+
+.photo-list img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background: var(--white);
+    padding: 8px 8px 20px;
+    box-shadow: 0 6px 14px rgba(36,18,9,.25);
+    opacity: .6;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.photo-list li:nth-child(odd) img  { transform: rotate(-4deg); }
+.photo-list li:nth-child(even) img { transform: rotate(3deg); }
+
+.photo-list img:hover,
+.photo-list img.active {
+    opacity: 1;
+    transform: rotate(0deg) scale(1.05);
+}
+
+
+/*
+APPLY — 커피 영수증 느낌의 신청서
+================================================ */
+#apply {
+    position: relative;
+    background: var(--espresso);
+    padding: 7rem 1rem 2rem;
+}
+
+/* 영수증 찢긴 윗단 */
+#apply::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 16px;
+    background:
+        linear-gradient(135deg, var(--bg) 50%, transparent 50%),
+        linear-gradient(45deg, var(--bg) 50%, transparent 50%);
+    background-size: 16px 16px;
+    background-position: top left, top left;
+    background-repeat: repeat-x;
+}
+
+#apply h2 {
+    color: var(--kraft-light);
+}
+
+.apply-form {
+    max-width: 440px;
+    margin: 0 auto 4rem;
+    background: var(--cream);
+    color: var(--espresso);
+    padding: 2rem 1.5rem;
+    box-shadow: 0 14px 30px rgba(0,0,0,.35);
+}
+
+.apply-form label {
+    font-family: "Gaegu", sans-serif;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: .4rem;
+}
+
+.apply-field {
+    background: var(--white);
+    border: 1px dashed var(--caramel);
+    padding: .9rem;
+    width: 100%;
+    margin-bottom: 1.3rem;
+    font-family: inherit;
+    color: var(--grey);
+}
+
+.form-message {
+    background: var(--white);
+    border: 1px dashed var(--caramel);
+    padding: .9rem;
+    width: 100%;
+    font-family: inherit;
+    color: var(--grey);
+    min-height: 6rem;
+    resize: vertical;
+    margin-bottom: .5rem;
+}
+
+/* 글자 수 표시 */
+.msg-count {
+    color: var(--espresso);
+    opacity: .7;
+    text-align: right;
+    font-size: 1rem;
+    margin-bottom: 1.3rem;
+}
+
+.msg-count.warn {
+    color: var(--rust);
+    opacity: 1;
+    font-weight: 700;
+}
+
+.apply-btn {
+    background: var(--rust);
+    color: var(--cream);
+    font-family: "Gaegu", sans-serif;
+    font-size: 1.15rem;
+    display: block;
+    width: 100%;
+    padding: .9rem;
+    margin-top: .5rem;
+    letter-spacing: .05em;
+}
+
+/*
+DARK MODE BUTTON — 작은 커피콩 스위치
+================================================ */
+.mode-switch {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 3;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    background: var(--espresso);
+    border: 2px solid var(--kraft);
+    font-size: 1.3rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,.4);
+    transition: .3s;
+}
+
+body.dark .mode-switch {
+    background: var(--caramel);
+}
+
+/*
+FOOTER
+================================================ */
+.footer {
+    border-top: 1px dashed rgba(250,241,228,.5);
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 1.05rem;
+    color: var(--kraft-light);
+}
+.footer a {
+    text-decoration: underline;
+}
+
+
+/*
+DESKTOP SIZE
+================================================ */
+@media (min-width: 600px) {
+    h2 {
+        font-size: 4rem;
+    }
+
+    a:hover {
+        color: var(--caramel);
+    }
+
+    .apply-btn:hover {
+        background: var(--caramel);
+    }
+
+    a:hover, .apply-btn:hover {
+        transition: .5s;
+    }
+
+    /* Header */
+    header a {
+        font-size: 1.2rem;
+    }
+
+    .btn-menu {
+        display: none;
+    }
+
+    .main-nav {
+        width: 100%;
+        position: static;
+        display: flex;
+        border-bottom: none;
+    }
+
+    .main-nav li {
+        margin: 0 0 0 1.8rem;
+    }
+
+    /* main — 오른쪽(나무 테이블 여백)으로 패널을 밀어서 커피잔과 겹치지 않게 함 */
+    #main .wrapper {
+        max-width: 1200px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .hero-panel {
+        max-width: 480px;
+        padding: 4.5rem 1.25rem;
+    }
+
+    #main h1 {
+        font-size: 4rem;
+    }
+
+    .main-date {
+        font-size: 1.5rem;
+    }
+
+    /* Menu */
+    .menu-table td {
+        display: table-cell;
+    }
+
+    .item {
+        padding: 1.125rem 0 1rem 1rem;
+    }
+
+    .price {
+        padding: 1rem 1rem 1rem 0;
+        text-align: right;
+    }
+
+    #menu h2 {
+        margin-bottom: 3rem;
+    }
+
+    /* Gallery */
+    .photo-main {
+        max-width: 720px;
+    }
+
+    .photo-list {
+        max-width: 760px;
+    }
+
+    .photo-list li {
+        width: 20%;
+    }
+}
